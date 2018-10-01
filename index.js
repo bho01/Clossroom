@@ -8,18 +8,13 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
   console.log('a user connected');
+  io.emit('join');
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
-});
-
-io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     console.log('message: ' + msg);
   });
-});
-   
-io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
   });

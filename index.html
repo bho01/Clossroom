@@ -18,6 +18,11 @@
     socket.on('chat message', function(msg){
       $('#messages').append($('<li>').text(msg));
     });
+    socket.on('join', function(user){
+      let msgJoin = "a user has joined...";
+      console.log('joined')
+      socket.emit('chat message', msgJoin);
+    });
   });
 </script>
   <body>
@@ -33,7 +38,7 @@
       form input { border: 0; padding: 10px; width: 90%; background: rgb(52,73,94);}
       #send{color: #fff;}
       form button { width: 10%; background: rgb(231,76,60); border-radius: 0px; border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages { list-style-type: none; margin: 0; padding: 0; height:90%; max-width: 100%}
       #messages li { padding: 5px 10px; background: rgb(44,62,80); color: #2df;}
     </style>
 
